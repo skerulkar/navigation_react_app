@@ -1,0 +1,29 @@
+.Task {
+    margin:  20px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.TableCustom {
+    width: 80%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+.TableCustom {
+    margin: auto;
+    border: 1px solid #dee2e6;
+}
+.TableCustom > thead {
+    background-color: #4285f4 !important;
+}
+.TableCustom th{
+    padding-top: 1.1rem;
+    padding-bottom: 1rem;
+    color: white;
+}
+.TableCustom td {
+    border-top: 1px solid #dee2e6;
+}
