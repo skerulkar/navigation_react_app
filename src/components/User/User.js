@@ -68,7 +68,8 @@ class User extends Component {
             this.setState({showChangeButton: true})
         }
     }
-    changePasswordHandler = (oldControl, newControl) => {
+    changePasswordHandler = (event,oldControl, newControl) => {
+        event.preventDefault();
         const updatedLoginForm = {
             ...this.state.UserForm
         }
@@ -77,8 +78,10 @@ class User extends Component {
         this.setState({UserForm: updatedLoginForm})
         this.setState({showChangeButton: false})
     }
-    logoutHandler = () => {
-        this.props.history.push('/login');
+    logoutHandler = (event) => {
+        event.preventDefault();
+        this.props.clicked();
+        this.props.history.replace('/');
     }
     checkValidity(value, rules) {
         
@@ -127,7 +130,7 @@ class User extends Component {
         if (this.state.showChangeButton) {
             buttonSection = <Button 
                                 btnType="Success" 
-                                clicked={(event) => this.changePasswordHandler('password','newPassword')}>
+                                clicked={(event) => this.changePasswordHandler(event,'password','newPassword')}>
                                 Change Password
                             </Button>;
         } else {
@@ -141,7 +144,7 @@ class User extends Component {
         
 
         let form = (
-        <form className={classes.Form} onSubmit={this.savePasswordHandler}>
+        <form className={classes.Form} onSubmit={this.loginHandler}>
             {formsElementArray.map(formElement => (
                 formElement.config.showControl ? null : <Input 
                     key={formElement.id}
@@ -156,7 +159,7 @@ class User extends Component {
             )}
             {buttonSection}
             <Button 
-                btnType="Success" 
+                btnType="Success"
                 clicked={this.logoutHandler}>Logout</Button>
         </form>);
         return (

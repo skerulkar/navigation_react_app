@@ -13,6 +13,9 @@ class App extends Component {
   clickHandler = (event) => {
     this.setState({isAuthorized : true})
   }
+  logOutHandler = (event) => {
+    this.setState({isAuthorized : false})
+  }
   
   render (){
     return (
@@ -23,7 +26,7 @@ class App extends Component {
               component={(props) => <Login {...props} clicked={this.clickHandler} />} />
             <Route path='/home' component={Home} />
             <Route path='/tasks' component={Tasks} />
-            <Route path='/user' component={(props) => <User {...props} isAuthorized={this.state.isAuthorized} />} />
+            <Route path='/user' component={(props) => <User {...props} isAuthorized={this.state.isAuthorized} clicked={this.logOutHandler}/>} />
           </Switch>
         </Layout>
       </div>

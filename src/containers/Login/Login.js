@@ -42,8 +42,12 @@ class Login extends Component {
     }
 
     componentDidMount () {
-        localStorage.setItem('userName', 'sanket662026');
-        localStorage.setItem('password', 'Gr8@work');
+        const userId = localStorage.getItem('userName');
+        if (!userId) {
+            localStorage.setItem('userName', 'sanket662026');
+            localStorage.setItem('password', 'Gr8@work');
+        }
+        
     }
     loginHandler = (event) => {
         event.preventDefault();
@@ -145,8 +149,7 @@ class Login extends Component {
             <Button 
                 btnType="Success" 
                 clicked={this.loginHandler}
-                disabled={!this.state.formIsValid} 
-                clicked1={this.authorisedHandler}>Login</Button>
+                disabled={!this.state.formIsValid}>Login</Button>
         </form>);
         return (
             <div className={classes.Login}>
